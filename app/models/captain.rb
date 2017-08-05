@@ -9,8 +9,7 @@ class Captain < ActiveRecord::Base
   def self.sailors
   	self.joins(boats: :classifications).where('classifications.name' => "Sailboat").distinct
   end
-
-  #NOT WORKING
+   
   def self.talented_seamen
   	self.joins(boats: :classifications).where(classifications: {name: "Sailboat"}).where(id: self.joins(boats: :classifications).where(classifications: {name: "Motorboat"}).ids).distinct
   end
